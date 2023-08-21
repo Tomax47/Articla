@@ -1,0 +1,28 @@
+<%content_for :page_title, "Welcome To Articla!" %>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-content">
+
+          <div class="media">
+            <div class="media-content">
+              <p class="title" style="font-size: 2em; font-weight: bold"><%= link_to post.title, post %></p>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="teaser"><%= truncate post.content, length: 150 %></div>
+            <div style="margin-top: 0.5em;"><%= link_to 'Read Post', post %></div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+</body>

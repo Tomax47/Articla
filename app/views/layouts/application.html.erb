@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Articla</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+<section class="hero is-link is-medium" style="background-color: #3a51bb">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+           <h1 class="title is-large"><%= link_to 'Articla', root_path%></h1>
+          </a>
+          <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu" style="margin: 0.5em;">
+          <div class="navbar-end">
+            <a class="navbar-item">
+              <%= link_to 'Home', root_path, style:"margin-top: 0.9em; font-size: 1.04em"%>
+            </a>
+            <a class="navbar-item">
+              <%= link_to 'Publish', new_post_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em"%>
+            </a>
+            <a class="navbar-item" style="margin-bottom: 1em">
+              Login
+            </a>
+            <a class="navbar-item" style="margin-bottom: 1em">
+              Register
+            </a>
+            <a class="navbar-item" style="margin-bottom: 1em">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title" style="color: #ffb400; font-size: 3em;">
+        <%= yield  :page_title%>
+      </h1>
+    </div>
+  </div>
+
+
+   <!-- Hero footer: will stick at the bottom
+  <div class="hero-foot">
+    <nav class="tabs">
+      <div class="container">
+        <ul>
+          <li class="is-active"><a>Overview</a></li>
+          <li><a>Modifiers</a></li>
+          <li><a>Grid</a></li>
+          <li><a>Elements</a></li>
+          <li><a>Components</a></li>
+          <li><a>Layout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+-->
+
+</section>
+<div class="notice"><%= notice %></div>
+
+<section class="pages" style="margin-top: 3em; margin-bottom: 3em">
+  <%= yield %>
+</section>
+
+<footer class="footer" style="height: 1em; background-color: #3a51bb">
+  <div class="content has-text-centered">
+    <p>
+      <strong style="color: #DADADA">Articla By </strong><a href="https://github.com/Tomax47" style="color: #ffb400; text-decoration: none; font-weight: bold">ThomaX47</a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
+

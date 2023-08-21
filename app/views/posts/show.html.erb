@@ -1,0 +1,67 @@
+<%content_for :page_title, @post.title %>
+
+<section class="section">
+  <div class="container">
+    <div class="level">
+
+      <!-- Left Side -->
+      <div class="level-left">
+        <p class="level-item">
+          <string class="tag is-link is-large">Actions</string>
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="level-right">
+        <p class="level-item">
+          <%= link_to 'Edit', edit_post_path, class:"button" %>
+        </p>
+        <p class="level-item">
+        <p>
+          <%= button_to "Delete", post_path(@post),method: :delete, from: {data: {turbo_confirm: 'Are You Sure?'} }, class:"button is-danger"  %>
+        </p>
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<center>
+  <section class="section">
+    <div class="container">
+      <div class="title">
+        <h1 class="heading">
+          <strong style="font-weight: bold; font-size: 2em; color: #ffb400">Content</strong>
+        </h1>
+      </div>
+      <div class="content">
+        <%= @post.content %>
+      </div>
+    </div>
+
+    <div class="text" style="margin-top: 2em;">
+      Created at <%= @post.created_at %>
+    </div>
+  </section>
+</center>
+
+<section class="section" style="margin-top: 2em">
+  <div class="container">
+    <div class="comments-count">
+      <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
+
+      <%= render @post.comments %>
+    </div>
+    <div class="comment-form">
+      <hr />
+      <div class="title">
+        <h3 class="subtitle is-4" style="font-weight: inherit; color: #3a51bb">Leave A Reply</h3>
+      </div>
+      <div class="form">
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </div>
+</section>

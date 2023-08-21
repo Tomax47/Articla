@@ -1,0 +1,15 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= comment.title %></strong>
+          <!-- HERE WE ARE REFERENCING THE COMMENT MODEL WITH THE COMMENT DATATYPE IN THE DB-->
+          <%= comment.body%>
+        </p>
+      </div>
+    </div>
+
+    <%= button_to 'Delete', [comment.post, comment], method: :delete, class:"button is-danger" %>
+  </article>
+</div>
