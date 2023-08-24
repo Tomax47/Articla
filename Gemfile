@@ -44,6 +44,9 @@ gem 'bulma-rails', '~> 0.9.4'
 gem 'simple_form', '~> 5.2'
 
 
+#BCrypt
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,0 +1,204 @@
+
+<%content_for :page_title, "Sign In" %>
+
+<!--
+<form action="/sessions" method="post" class="form">
+
+  <center>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div class="username">
+      <label for="username" class="username-label">Username</label>
+      <input type="text" id="username" name="user[username]" class="username-input">
+    </div>
+
+    <div class="password">
+      <label for="password" class="password-label">Password</label>
+      <input type="password" id="password" name="user[password]" class="password-input">
+    </div>
+
+    <div class="submit-btn">
+      <button type="submit" value="Sign in" class="submit-btn">Login</button>
+    </div>
+  </center>
+</form>
+-->
+
+
+<section>
+  <center>
+    <form class="form" action="/sessions" method="post">
+
+      <p class="form-title">Sign in to your account</p>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <div class="input-container" for="username">
+        <input id="username" name="user[username]" type="username" placeholder="Enter Username", >
+        <span></span>
+      </div>
+
+      <div class="input-container" for="password">
+        <input id="password" name="user[password]" type="password" placeholder="Enter password">
+      </div>
+
+      <button type="submit" class="submit" value="Sign in">
+        Sign in
+      </button>
+
+      <p class="signup-link">
+        No account? <a><%= link_to 'Sign-Up', users_new_path %></a>
+      </p>
+    </form>
+  </center>
+</section>
+
+
+
+<!--
+<style>
+
+  .username-label {
+      display: block;
+      color: #ffb400;
+      font-weight: bold;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+  }
+
+  .username-input{
+      border-radius: 1em;
+      width: 25em;
+      height: 2.5em;
+      border-style: dashed;
+  }
+
+  .password-label {
+      display: block;
+      color: #ffb400;
+      font-weight: bold;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+  }
+
+  .password-input{
+      border-radius: 1em;
+      width: 25em;
+      height: 2.5em;
+      border-style: dashed;
+      margin-bottom: 1.5em;
+  }
+
+  button {
+      --width: 15em;
+      --timing: 2s;
+      border: 0;
+      width: var(--width);
+      padding-block: 1em;
+      color: #ffb400;
+      font-weight: bold;
+      font-size: 1em;
+      background: #3a51bb;
+      transition: all 0.2s;
+      border-radius: 1em;
+  }
+
+  button:hover {
+      background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+      animation: var(--timing) linear dance6123 infinite;
+      transform: scale(1.1) translateY(-1px);
+  }
+
+  @keyframes dance6123 {
+      to {
+          background-position: var(--width);
+      }
+  }
+
+</style>
+-->
+
+<style>
+
+
+    .form {
+
+        background-color: #fff;
+        display: block;
+        padding: 1rem;
+        max-width: 25em;
+        max-height: 30em;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-title {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 600;
+        text-align: center;
+        color: #3a51bb;
+        margin-bottom: 1em;
+    }
+
+    .input-container {
+        position: relative;
+    }
+
+    .input-container input, .form button {
+        outline: none;
+        border: 1px solid #e5e7eb;
+        margin: 8px 0;
+    }
+
+    .input-container input {
+        background-color: #fff;
+        padding: 1rem;
+        padding-right: 3rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        width: 300px;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    button {
+        --width: 15em;
+        height: 3.5em;
+        --timing: 2s;
+        border: 0;
+        width: var(--width);
+        padding-block: 1em;
+        color: #ffb400;
+        font-weight: bold;
+        font-size: 1em;
+        background: #3a51bb;
+        transition: all 0.2s;
+        border-radius: 1em;
+    }
+
+    button:hover {
+        background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+        animation: var(--timing) linear dance6123 infinite;
+        transform: scale(1.1) translateY(-1px);
+    }
+
+    @keyframes dance6123 {
+        to {
+            background-position: var(--width);
+        }
+    }
+
+
+    .signup-link {
+        color: #2E2F30;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        text-align: center;
+    }
+
+    .signup-link a {
+        text-decoration: none;
+        color: #ffb400;
+    }
+</style>

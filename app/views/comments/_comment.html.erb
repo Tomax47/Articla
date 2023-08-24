@@ -2,14 +2,28 @@
   <article class="media">
     <div class="media-content">
       <div class="content">
-        <p>
-          <strong><%= comment.title %></strong>
+        <p class="comment-title">
+          <strong>@<%= comment.title %></strong>
           <!-- HERE WE ARE REFERENCING THE COMMENT MODEL WITH THE COMMENT DATATYPE IN THE DB-->
+        </p>
+        <p class="comment-body">
           <%= comment.body%>
         </p>
+
       </div>
     </div>
-
-    <%= button_to 'Delete', [comment.post, comment], method: :delete, class:"button is-danger" %>
+    <% if current_user.id == comment.user_id %>
+      <%= button_to 'Delete',post_comment_path(comment), method: :delete, class:"button is-danger" %>
+    <% end %>
   </article>
 </div>
+
+<style>
+  .sub-comment {
+      padding-left: 20px;
+  }
+
+  .comment-form {
+      display: block;
+  }
+</style>

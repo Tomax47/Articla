@@ -1,23 +1,123 @@
-<center>
-  <div class="mb-3">
-    <%= simple_form_for @post do |f| %>
-      <div class="field">
-        <div class="control">
-          <%= f.input :title, input_html: {class: 'input'}, wrapper: false, label_html: {class: 'label'}  %>
-        </div>
-      </div>
 
-      <div class="field">
-        <div class="control">
-          <%= f.input :content, input_html: {class: 'textarea'}, wrapper: false, label_html: {class: 'label'} %>
-        </div>
-      </div>
+<%= form_with(model: @post) do |form|%>
+  <% if @post.errors.any? %>
+    <div style="color: crimson">
+      <h2><center><%= pluralize(@post.errors.count, "error") %>prohibited this post from being saved:</center></h2>
 
-      <%= f.button :submit, class: "button is-link", style:"margin-top:1.5em;"%>
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><center><%= error.full_message%></center></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <%end %>
+  <div>
+    <center><%= form.label :title, style: "display: block", class:"title-label"%>
+    <%= form.text_field :title, class:"title-input"%>
+    </center>
   </div>
-</center>
+
+  <div>
+    <center><%= form.label :content, style: "display: block", class:"content-label" %>
+    <%= form.text_field :content, class:"content-input"%>
+    </center>
+  </div>
+
+
+  <div>
+    <center><%= form.submit class:"button"%></center>
+  </div>
+<% end %>
 
 
 
+
+<style>
+
+  .title-label {
+      color: royalblue;
+      font-size: 2em;
+      font-weight: inherit;
+      letter-spacing: -1px;
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      margin-bottom: 1em;
+  }
+
+  .content-label {
+      margin-top: 1em;
+      align-self: center;
+      color: royalblue;
+      font-size: 2em;
+      font-weight: inherit;
+      letter-spacing: -1px;
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1em;
+  }
+
+  .title-input {
+      outline: 0;
+      border: 0.08em solid #3a51bb;
+      padding: 8px 14px;
+      border-radius: 1em;
+      width: 50%;
+      height: 50px;
+      text-align: center;
+
+  }
+
+  .content-input {
+      border-radius: 1em;
+      height: 100px;
+      width: 50%;
+      resize: none;
+      outline: 0;
+      padding: 8px 14px;
+      border: 0.08em solid #3a51bb;
+  }
+
+  .title-input:hover {
+      border: 0.1em solid #ffb400;
+  }
+
+  .content-input:hover {
+      border: 0.1em solid #ffb400;
+  }
+
+  .button {
+      margin-top: 1em;
+      --width: 15em;
+      height: 3.5em;
+      --timing: 2s;
+      border: 0;
+      width: var(--width);
+      padding-block: 1em;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1em;
+      background: #ffb400;
+      transition: all 0.2s;
+      border-radius: 1em;
+      align-self: center;
+  }
+
+  .button:hover {
+      background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+      animation: var(--timing) linear dance6123 infinite;
+      transform: scale(1.1) translateY(-1px);
+  }
+
+    @keyframes dance6123 {
+        to {
+            background-position: var(--width);
+        }
+    }
+
+</style>

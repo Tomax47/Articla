@@ -39,18 +39,24 @@
             <a class="navbar-item">
               <%= link_to 'Home', root_path, style:"margin-top: 0.9em; font-size: 1.04em"%>
             </a>
-            <a class="navbar-item">
-              <%= link_to 'Publish', new_post_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em"%>
-            </a>
-            <a class="navbar-item" style="margin-bottom: 1em">
-              Login
-            </a>
-            <a class="navbar-item" style="margin-bottom: 1em">
-              Register
-            </a>
-            <a class="navbar-item" style="margin-bottom: 1em">
-              Logout
-            </a>
+
+            <% if current_user.nil? %>
+              <a class="navbar-item">
+                <%= link_to 'login', sessions_new_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em" %>
+              </a>
+              <a class="navbar-item">
+                <%= link_to 'Register', users_new_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em" %>
+              </a>
+
+            <%elsif current_user %>
+              <a class="navbar-item">
+                <%= link_to 'Publish', new_post_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em"%>
+              </a>
+              <a class="navbar-item">
+                <%= link_to 'Logout', sign_out_path, style:"margin-top: 0.9em; margin-right: 0.5em; font-size: 1.04em"%>
+              </a>
+            <%end %>
+
           </div>
         </div>
       </div>
@@ -83,21 +89,24 @@
     </nav>
   </div>
 -->
-
 </section>
-<div class="notice"><%= notice %></div>
-
+<center><p style="color: crimson"><%= notice %></p></center>
 <section class="pages" style="margin-top: 3em; margin-bottom: 3em">
   <%= yield %>
 </section>
 
-<footer class="footer" style="height: 1em; background-color: #3a51bb">
+
+<footer class="footer-section" style="height: 5em; background-color: #3a51bb">
   <div class="content has-text-centered">
-    <p>
+    <p sty>
       <strong style="color: #DADADA">Articla By </strong><a href="https://github.com/Tomax47" style="color: #ffb400; text-decoration: none; font-weight: bold">ThomaX47</a>
     </p>
   </div>
 </footer>
+
+
 </body>
 </html>
+
+
 

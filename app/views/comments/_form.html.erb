@@ -1,15 +1,66 @@
-<%= simple_form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-    <div class="control">
-      <%= f.input :title, input_html: {class: 'input'}, wrapper: false, label_html: {class: 'label'}  %>
-    </div>
+<form action="<%= post_comments_path(post) %>" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <!--<input name="comment[title]" id="title" type="title">-->
+
+  <div class="content-div">
+    <textarea name="comment[body]" id="body" type="body" class="textarea-space"></textarea>
+    <button type="submit" value="Submit" class="submit-btn">Post</button>
   </div>
 
-  <div class="field">
-    <div class="control">
-      <%= f.input :body, input_html: {class: 'textarea'}, wrapper: false, label_html: {class: 'label'} %>
-    </div>
-  </div>
 
-  <%= f.button :submit, class: "button is-link"%>
-<%end %>
+</form>
+
+<style>
+
+  .content-div {
+      display: flex;
+  }
+
+  .textarea-space {
+      min-width: 20em;
+      max-width: 30em;
+      min-height: 3em;
+      max-height: 5em;
+      border-style: groove;
+      border-color: #3a51bb;
+      border-radius: 0.5em;
+  }
+
+  .textarea-space:hover {
+      border-color: #ffb400;
+      transition: color;
+  }
+
+
+  .submit-btn {
+      --width: 8em;
+      height: 3em;
+      --timing: 2s;
+      border: 0;
+      width: var(--width);
+      padding-block: 1em;
+      color: #ffb400;
+      font-weight: bold;
+      font-size: 1em;
+      background: #3a51bb;
+      transition: all 0.2s;
+      border-radius: 1em;
+      margin-left: 0.5em;
+  }
+
+  .submit-btn:hover {
+      background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+      animation: var(--timing) linear dance6123 infinite;
+      transform: scale(1.1) translateY(-1px);
+      color: #ffffff;
+  }
+
+  @keyframes dance6123 {
+      to {
+          background-position: var(--width);
+      }
+  }
+
+</style>

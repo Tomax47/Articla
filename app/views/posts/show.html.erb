@@ -1,33 +1,36 @@
 <%content_for :page_title, @post.title %>
 
-<section class="section">
-  <div class="container">
-    <div class="level">
 
-      <!-- Left Side -->
-      <div class="level-left">
-        <p class="level-item">
-          <string class="tag is-link is-large">Actions</string>
-        </p>
+<% if current_user.id == @post.user_id %>
+  <section class="section">
+    <div class="container">
+      <div class="level">
+
+        <!-- Left Side -->
+        <div class="level-left">
+          <p class="level-item">
+            <string class="tag is-link is-large">Actions</string>
+          </p>
+        </div>
+
+        <!-- Right Side -->
+        <div class="level-right">
+          <p class="level-item">
+            <%= link_to 'Edit', edit_post_path, class:"button" %>
+          </p>
+          <p class="level-item">
+          <p>
+            <%= button_to "Delete", post_path(@post),method: :delete, from: {data: {turbo_confirm: 'Are You Sure?'} }, class:"button is-danger"  %>
+          </p>
+          </p>
+        </div>
+
+
       </div>
-
-      <!-- Right Side -->
-      <div class="level-right">
-        <p class="level-item">
-          <%= link_to 'Edit', edit_post_path, class:"button" %>
-        </p>
-        <p class="level-item">
-        <p>
-          <%= button_to "Delete", post_path(@post),method: :delete, from: {data: {turbo_confirm: 'Are You Sure?'} }, class:"button is-danger"  %>
-        </p>
-        </p>
-      </div>
-
-
     </div>
-  </div>
-</section>
-
+  </section>
+<%end %>
+<!-- POST SECTION-->
 <center>
   <section class="section">
     <div class="container">
@@ -42,17 +45,19 @@
     </div>
 
     <div class="text" style="margin-top: 2em;">
-      Created at <%= @post.created_at %>
+      <p class="subtitle">Created at <%= @post.created_at %></p>
+      <p class="subtitle">By <%= @post.user.username %></p>
     </div>
   </section>
 </center>
 
+<!-- COMMENTS SECTION-->
 <section class="section" style="margin-top: 2em">
   <div class="container">
     <div class="comments-count">
       <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
-
-      <%= render @post.comments %>
+      <!-- The .where(parent_id: nil) is to show on the post only the parent comments -->
+      <%= render @post.comments.order(id: :desc)%>
     </div>
     <div class="comment-form">
       <hr />
@@ -60,7 +65,7 @@
         <h3 class="subtitle is-4" style="font-weight: inherit; color: #3a51bb">Leave A Reply</h3>
       </div>
       <div class="form">
-        <%= render 'comments/form' %>
+        <%= render partial: 'comments/form', locals:  { post: @post }%>
       </div>
     </div>
   </div>
